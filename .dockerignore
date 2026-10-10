@@ -1,0 +1,18 @@
+.git
+**/node_modules
+**/.venv
+**/__pycache__
+**/*.pyc
+
+# Large/user-supplied training data is excluded, but the verified ready-to-run
+# benchmark subset and production baseline artifacts are deliberately packaged.
+ml-service/data/**
+!ml-service/data/benchmark/
+!ml-service/data/benchmark/**
+ml-service/models/**
+!ml-service/models/sentinel_bundle.joblib
+!ml-service/models/meta.json
+ml-service/reports/**
+backend/uploads/**
+*.zip
+.DS_Store

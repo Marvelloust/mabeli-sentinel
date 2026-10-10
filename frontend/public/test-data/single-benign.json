@@ -1,0 +1,19 @@
+{
+  "label": "BENIGN",
+  "sourceName": "Sentinel Test Kit \u00b7 BENIGN",
+  "provenance": "Genuine CICIDS2017-derived record from the bundled verified preview subset.",
+  "features": {
+    "Destination Port": 80.0,
+    "Flow Duration": 115171368.0,
+    "Total Fwd Packets": 16.0,
+    "Total Backward Packets": 14.0,
+    "Total Length of Fwd Packets": 508.0,
+    "Total Length of Bwd Packets": 1397.0,
+    "Fwd Packet Length Max": 424.0,
+    "Fwd Packet Length Min": 0.0,
+    "Fwd Packet Length Mean": 31.75,
+    "Fwd Packet Length Std": 104.61071
+  },
+  "sourceIp": "192.168.10.50",
+  "destinationIp": "192.168.10.3"
+}

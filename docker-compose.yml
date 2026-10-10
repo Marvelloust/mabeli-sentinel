@@ -1,0 +1,56 @@
+services:
+  mongo:
+    image: mongo:8
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  ml:
+    build:
+      context: .
+      dockerfile: ml-service/Dockerfile
+    restart: unless-stopped
+    environment:
+      AUTO_BOOTSTRAP_REMOTE: "true"
+      SENTINEL_DATA_DIR: /data
+    volumes:
+      - ./ml-service/models:/service/models
+      - ./ml-service/reports:/service/reports
+      - ./ml-service/data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import json,urllib.request; d=json.load(urllib.request.urlopen('http://127.0.0.1:8000/health')); assert d.get('model_ready')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+      ml:
+        condition: service_healthy
+    environment:
+      PORT: 4000
+      MONGODB_URI: mongodb://mongo:27017/mabeli_sentinel
+      JWT_SECRET: ${JWT_SECRET:-mabeli-sentinel-local-secret-change-before-production-9e126b66d94f}
+      JWT_EXPIRES_IN: 8h
+      ML_SERVICE_URL: http://ml:8000
+      FRONTEND_ORIGIN: http://localhost:4000
+      MAX_UPLOAD_MB: 500
+      NODE_ENV: production
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend/uploads:/app/backend/uploads
+
+volumes:
+  mongo_data:

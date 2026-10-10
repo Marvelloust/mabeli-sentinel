@@ -1,0 +1,13 @@
+{
+  "name": "CICIDS2017 verified preview subset",
+  "purpose": "Offline bootstrap and end-to-end validation fallback only",
+  "source_dataset": "CICIDS2017",
+  "source_repository": "https://huggingface.co/datasets/transformer112/cicids2017-ids-dataset",
+  "source_viewer_pages": [
+    "https://huggingface.co/datasets/transformer112/cicids2017-ids-dataset/viewer/default/train",
+    "https://huggingface.co/datasets/transformer112/cicids2017-ids-dataset/viewer/default/train?p=2",
+    "https://huggingface.co/datasets/transformer112/cicids2017-ids-dataset/viewer/default/train?p=3"
+  ],
+  "retrieved": "2026-09-15",
+  "notes": "Rows are genuine CICIDS2017-derived records transcribed from the public dataset viewer. Only a small feature subset is included so the application has an honest offline baseline. On first startup Mabeli Sentinel automatically attempts to download the repository's 20,000-row public parquet sample and promote a stronger model. The fallback must not be presented as a full-dataset research result."
+}

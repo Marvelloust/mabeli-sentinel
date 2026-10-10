@@ -1,0 +1,19 @@
+{
+  "label": "PortScan",
+  "sourceName": "Sentinel Test Kit \u00b7 PortScan",
+  "provenance": "Genuine CICIDS2017-derived record from the bundled verified preview subset.",
+  "features": {
+    "Destination Port": 109.0,
+    "Flow Duration": 41.0,
+    "Total Fwd Packets": 1.0,
+    "Total Backward Packets": 1.0,
+    "Total Length of Fwd Packets": 0.0,
+    "Total Length of Bwd Packets": 6.0,
+    "Fwd Packet Length Max": 0.0,
+    "Fwd Packet Length Min": 0.0,
+    "Fwd Packet Length Mean": 0.0,
+    "Fwd Packet Length Std": 0.0
+  },
+  "sourceIp": "205.174.165.73",
+  "destinationIp": "192.168.10.50"
+}
